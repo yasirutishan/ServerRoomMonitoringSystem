@@ -59,19 +59,31 @@ class _ChartPageState extends State<ChartPage> {
   @override
   Widget build(BuildContext context) {
     return SafeArea(
-        child: Scaffold(
-            appBar: AppBar(
-              title: const Text('chart test'),
-            ),
-            body: SfCartesianChart(
+      child: Scaffold(
+          appBar: AppBar(
+            title: const Text('chart test'),
+          ),
+          body: SfCartesianChart(
               primaryXAxis: DateTimeAxis(),
-              series: <ChartSeries>[
-                SplineSeries<SensorData, DateTime>(
+              series: <ChartSeries<SensorData, DateTime>>[
+                // Renders line chart
+                LineSeries<SensorData, DateTime>(
                     dataSource: sensorData,
                     xValueMapper: (SensorData data, _) => data.timeStamp,
                     yValueMapper: (SensorData data, _) => data.temperature)
-              ],
-            )));
+              ])
+
+          // SfCartesianChart(
+          //   primaryXAxis: DateTimeAxis(),
+          //   series: <ChartSeries>[
+          //     SplineSeries<SensorData, DateTime>(
+          //         dataSource: sensorData,
+          //         xValueMapper: (SensorData data, _) => data.timeStamp,
+          //         yValueMapper: (SensorData data, _) => data.temperature)
+          //   ],
+          // ),
+          ),
+    );
   }
 }
 
@@ -85,9 +97,11 @@ class SensorData {
   final double voltage;
 
   factory SensorData.fromJson(Map<dynamic, dynamic> parsedJson) {
-    int st = int.parse(parsedJson["timeStamp"]) * 1000;
-    var date = DateTime.fromMicrosecondsSinceEpoch(st);
+    double st = int.parse(parsedJson["timeStamp"]) / 1000;
+    var date = DateTime.fromMicrosecondsSinceEpoch(st.round());
+    print(st);
     print(date);
+
     return SensorData(
         date,
         parsedJson["fire"],

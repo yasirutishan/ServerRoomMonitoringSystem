@@ -55,6 +55,7 @@ class DefaultFirebaseOptions {
     messagingSenderId: '459053770398',
     projectId: 'sever-monitoring-system',
     authDomain: 'sever-monitoring-system.firebaseapp.com',
+    databaseURL: 'https://sever-monitoring-system-default-rtdb.asia-southeast1.firebasedatabase.app',
     storageBucket: 'sever-monitoring-system.appspot.com',
     measurementId: 'G-Z4D0XMYN4M',
   );
@@ -64,6 +65,7 @@ class DefaultFirebaseOptions {
     appId: '1:459053770398:android:61f7962566dfb90f81fd8f',
     messagingSenderId: '459053770398',
     projectId: 'sever-monitoring-system',
+    databaseURL: 'https://sever-monitoring-system-default-rtdb.asia-southeast1.firebasedatabase.app',
     storageBucket: 'sever-monitoring-system.appspot.com',
   );
 }

@@ -4,7 +4,6 @@ import 'package:firebase_core/firebase_core.dart';
 import 'package:syncfusion_flutter_charts/charts.dart';
 import 'firebase_options.dart';
 import 'dart:convert';
-import 'package:flutter/services.dart' show rootBundle;
 import 'package:http/http.dart' as http;
 
 void main() async {
@@ -12,7 +11,7 @@ void main() async {
   await Firebase.initializeApp(
     options: DefaultFirebaseOptions.currentPlatform,
   );
-  return runApp(MyApp());
+  return runApp(const MyApp());
 }
 
 class MyApp extends StatelessWidget {
@@ -34,70 +33,70 @@ class ChartPage extends StatefulWidget {
 }
 
 class _ChartPageState extends State<ChartPage> {
-  List<SalesDetails> sales = [];
+  List<SensorData> sensorData = [];
+  DatabaseReference ref = FirebaseDatabase.instance.ref("sensor_1_data");
 
-  Future<String> getJsonFromFirebase() async {
-    String url =
-        "https://sever-monitoring-system-default-rtdb.asia-southeast1.firebasedatabase.app/data.json";
-    http.Response response = await http.get(Uri.parse(url));
-    return response.body.toString();
-  }
+  void loadSensorData() async {
+    // Get the Stream
+    Stream<DatabaseEvent> stream = ref.onValue;
 
-  Future loadSalesData() async {
-    final String jsonString = await getJsonFromFirebase();
-    // print(jsonString);
-    final dynamic jsonRespnse = jsonDecode(jsonString);
-    for (Map<String, dynamic> i in jsonRespnse) {
-      sales.add(SalesDetails.fromJson(i));
-    }
+// Subscribe to the stream!
+    stream.listen((DatabaseEvent event) {
+      Map<dynamic, dynamic> map = event.snapshot.value as Map;
+
+      for (var key in map.values) {
+        sensorData.add(SensorData.fromJson(key));
+      }
+    });
   }
 
   @override
   void initState() {
-    loadSalesData();
+    loadSensorData();
     super.initState();
   }
 
   @override
   Widget build(BuildContext context) {
     return SafeArea(
-      child: Scaffold(
-        appBar: AppBar(
-          title: const Text('chart test'),
-        ),
-        body: FutureBuilder(
-          future: getJsonFromFirebase(),
-          builder: (BuildContext context, AsyncSnapshot snapshot) {
-            if (snapshot.hasData) {
-              return SfCartesianChart(
-                primaryXAxis: CategoryAxis(),
-                series: <ChartSeries>[
-                  SplineSeries<SalesDetails, String>(
-                    dataSource: sales,
-                    xValueMapper: (SalesDetails details, _) => details.month,
-                    yValueMapper: (SalesDetails details, _) =>
-                        details.salesCount,
-                  )
-                ],
-              );
-            } else {
-              return const Center(child: CircularProgressIndicator());
-            }
-          },
-        ),
-      ),
-    );
+        child: Scaffold(
+            appBar: AppBar(
+              title: const Text('chart test'),
+            ),
+            body: SfCartesianChart(
+              primaryXAxis: DateTimeAxis(),
+              series: <ChartSeries>[
+                SplineSeries<SensorData, DateTime>(
+                    dataSource: sensorData,
+                    xValueMapper: (SensorData data, _) => data.timeStamp,
+                    yValueMapper: (SensorData data, _) => data.temperature)
+              ],
+            )));
   }
 }
 
-class SalesDetails {
-  SalesDetails(this.month, this.salesCount);
-  final String month;
-  final double salesCount;
+class SensorData {
+  SensorData(
+      this.timeStamp, this.fire, this.humidity, this.temperature, this.voltage);
+  final DateTime timeStamp;
+  final bool fire;
+  final double temperature;
+  final double humidity;
+  final double voltage;
 
-  factory SalesDetails.fromJson(Map<String, dynamic> parsedJson) {
-    // print(parsedJson);
-    var salesCountVal = parsedJson['salesCount'] * 1.0;
-    return SalesDetails(parsedJson['month'] as String, salesCountVal);
+  factory SensorData.fromJson(Map<dynamic, dynamic> parsedJson) {
+    int st = int.parse(parsedJson["timeStamp"]) * 1000;
+    var date = DateTime.fromMicrosecondsSinceEpoch(st);
+    print(date);
+    return SensorData(
+        date,
+        parsedJson["fire"],
+        double.parse(
+            parsedJson["humid"].toString().replaceAll(RegExp(r'[^0-9.]'), '')),
+        double.parse(
+            parsedJson["temp"].toString().replaceAll(RegExp(r'[^0-9.]'), '')),
+        double.parse(parsedJson["voltage"]
+            .toString()
+            .replaceAll(RegExp(r'[^0-9.]'), '')));
   }
 }

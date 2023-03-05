@@ -1,6 +1,7 @@
 {
   "project_info": {
     "project_number": "459053770398",
+    "firebase_url": "https://sever-monitoring-system-default-rtdb.asia-southeast1.firebasedatabase.app",
     "project_id": "sever-monitoring-system",
     "storage_bucket": "sever-monitoring-system.appspot.com"
   },

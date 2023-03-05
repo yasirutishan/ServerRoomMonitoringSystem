@@ -1,0 +1,14 @@
+[
+    {
+        "month": "Jul",
+        "salesCount": 10
+    },
+    {
+        "month": "Aug",
+        "salesCount": 20
+    },
+    {
+        "month": "Sep",
+        "salesCount": 80
+    }
+]

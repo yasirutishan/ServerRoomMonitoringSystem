@@ -45,7 +45,9 @@ class _ChartPageState extends State<ChartPage> {
       Map<dynamic, dynamic> map = event.snapshot.value as Map;
 
       for (var key in map.values) {
-        sensorData.add(SensorData.fromJson(key));
+        setState(() {
+          sensorData.add(SensorData.fromJson(key));
+        });
       }
     });
   }
@@ -69,7 +71,7 @@ class _ChartPageState extends State<ChartPage> {
                 // Renders line chart
                 LineSeries<SensorData, DateTime>(
                     dataSource: sensorData,
-                    xValueMapper: (SensorData data, _) => data.timeStamp,
+                    xValueMapper: (SensorData data, _) => data.time,
                     yValueMapper: (SensorData data, _) => data.temperature)
               ])
 
@@ -89,8 +91,8 @@ class _ChartPageState extends State<ChartPage> {
 
 class SensorData {
   SensorData(
-      this.timeStamp, this.fire, this.humidity, this.temperature, this.voltage);
-  final DateTime timeStamp;
+      this.time, this.fire, this.humidity, this.temperature, this.voltage);
+  final DateTime time;
   final bool fire;
   final double temperature;
   final double humidity;
@@ -99,7 +101,6 @@ class SensorData {
   factory SensorData.fromJson(Map<dynamic, dynamic> parsedJson) {
     double st = int.parse(parsedJson["timeStamp"]) / 1000;
     var date = DateTime.fromMicrosecondsSinceEpoch(st.round());
-    print(st);
     print(date);
 
     return SensorData(

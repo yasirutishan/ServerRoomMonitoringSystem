@@ -24,7 +24,7 @@ Socket.io
 
 Node.js
 
-MongoDB
+Firebase
 
 ---
 

@@ -20,9 +20,11 @@ You can contact me directly at 10749896@students.plymouth.ac.uk if you have any 
 
 ### Dependencies
 
-Socket.io
+Arduino IDE - C++
 
-Node.js
+Google IoT Cloud
+
+Visual Studio Code - Flutter | Dart
 
 Firebase
 
@@ -30,9 +32,13 @@ Firebase
 
 ### Key Features
 
-Arduino IoT Dashboard Monitoring
+Dashboard Monitoring
 
 Notifications - Alerts on Email 
+
+Syncfusion Flutter Charts
+
+Bcrypt
 
 ---
 

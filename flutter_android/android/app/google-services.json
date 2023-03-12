@@ -1,0 +1,69 @@
+{
+  "project_info": {
+    "project_number": "459053770398",
+    "firebase_url": "https://sever-monitoring-system-default-rtdb.asia-southeast1.firebasedatabase.app",
+    "project_id": "sever-monitoring-system",
+    "storage_bucket": "sever-monitoring-system.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:459053770398:android:04a11e2b9a96f1e181fd8f",
+        "android_client_info": {
+          "package_name": "com.example.flutter_android"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "459053770398-cldn9gpb7rg4jqqtqmimeqsuhr2jdpok.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAIfXgnvxRkAu8DyBoDNlFGBaFBhiQAY8M"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "459053770398-cldn9gpb7rg4jqqtqmimeqsuhr2jdpok.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:459053770398:android:61f7962566dfb90f81fd8f",
+        "android_client_info": {
+          "package_name": "com.example.flutter_application"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "459053770398-cldn9gpb7rg4jqqtqmimeqsuhr2jdpok.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAIfXgnvxRkAu8DyBoDNlFGBaFBhiQAY8M"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "459053770398-cldn9gpb7rg4jqqtqmimeqsuhr2jdpok.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

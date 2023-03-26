@@ -1,0 +1,17 @@
+stream: ref.limitToLast(4).orderByKey().onValue,
+      builder: (context, snapshot) {
+        if (snapshot.hasData) {
+          // print("Error on the way");
+          DataSnapshot dataValues = snapshot.data!
+              .snapshot; //Error: The getter snapshot is not defined for the type 'Object';
+          Map<dynamic, dynamic> values = dataValues.value as Map;
+          values.forEach((key, values) {
+            // t.add(values);
+            print(values);
+          });
+
+          return Column(
+            children: [
+              Container(child: Text(jsonEncode(values))),
+            ],
+          );

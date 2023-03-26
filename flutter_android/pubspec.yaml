@@ -38,6 +38,9 @@ dependencies:
   firebase_core: ^2.7.1
   firebase_auth: ^4.2.10
   flutter_svg: ^2.0.3
+  flutter_staggered_grid_view: ^0.6.2
+  firebase_database: ^10.0.16
+  syncfusion_flutter_gauges: ^21.1.35
 
 dev_dependencies:
   flutter_test:

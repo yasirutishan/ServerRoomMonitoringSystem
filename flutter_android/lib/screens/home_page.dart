@@ -1,7 +1,7 @@
-import 'dart:html';
-
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_android/screens/settings_page.dart';
+import 'package:flutter_android/screens/status_page.dart';
 
 class HomePage extends StatefulWidget {
   const HomePage({super.key});
@@ -12,13 +12,7 @@ class HomePage extends StatefulWidget {
 
 class _HomePageState extends State<HomePage> {
   final List<Widget> _screens = [
-    Container(
-      alignment: Alignment.center,
-      child: const Text(
-        "Home",
-        style: TextStyle(fontSize: 40),
-      ),
-    ),
+    const StatusPage(),
     Container(
       alignment: Alignment.center,
       child: const Text(
@@ -47,13 +41,7 @@ class _HomePageState extends State<HomePage> {
         style: TextStyle(fontSize: 40),
       ),
     ),
-    Container(
-      alignment: Alignment.center,
-      child: const Text(
-        "Settings",
-        style: TextStyle(fontSize: 40),
-      ),
-    )
+    const SettingsPage(),
   ];
 
   int _selectedIndex = 0;
@@ -65,11 +53,6 @@ class _HomePageState extends State<HomePage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        actions: [
-          IconButton(onPressed: signUserOut, icon: const Icon(Icons.logout))
-        ],
-      ),
       bottomNavigationBar: MediaQuery.of(context).size.width < 640
           ? BottomNavigationBar(
               currentIndex: _selectedIndex,
@@ -78,7 +61,7 @@ class _HomePageState extends State<HomePage> {
               // showUnselectedLabels: true,
               items: const [
                 BottomNavigationBarItem(
-                    icon: Icon(Icons.storage), label: "Home"),
+                    icon: Icon(Icons.storage), label: "Status"),
                 BottomNavigationBarItem(
                     icon: Icon(Icons.thermostat), label: "Temperature"),
                 BottomNavigationBarItem(
@@ -103,7 +86,7 @@ class _HomePageState extends State<HomePage> {
             NavigationRail(
               destinations: const [
                 NavigationRailDestination(
-                    icon: Icon(Icons.storage), label: Text("Home")),
+                    icon: Icon(Icons.storage), label: Text("Status")),
                 NavigationRailDestination(
                     icon: Icon(Icons.thermostat), label: Text("Temperature")),
                 NavigationRailDestination(
@@ -139,7 +122,7 @@ class _HomePageState extends State<HomePage> {
                 ],
               ),
             ),
-          Expanded(child: _screens[_selectedIndex])
+          _screens[_selectedIndex]
         ],
       ),
     );

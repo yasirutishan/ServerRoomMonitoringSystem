@@ -65,7 +65,7 @@ class _LoginFormState extends State<LoginForm> {
               height: 30,
             ),
             TextField(
-              obscureText: true,
+              obscureText: false,
               controller: emailController,
               decoration: const InputDecoration(
                 border: OutlineInputBorder(),

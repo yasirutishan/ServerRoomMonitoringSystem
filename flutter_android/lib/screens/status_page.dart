@@ -1,6 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_staggered_grid_view/flutter_staggered_grid_view.dart';
-
 import '../widgets/gauges.dart';
 
 class StatusPage extends StatefulWidget {
@@ -19,44 +17,24 @@ class _StatusPageState extends State<StatusPage> {
             ? const Row(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
-                  GaugeDisplay(
+                  TemperatureGuage(
                     refString: "sensor_1_data",
-                    vital: 'temperature',
                   ),
-                  GaugeDisplay(
+                  HumidityGauge(
                     refString: "sensor_1_data",
-                    vital: 'humidity',
                   ),
                 ],
               )
             : const Row(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
-                  GaugeDisplay(
+                  TemperatureGuage(
                     refString: "sensor_1_data",
-                    vital: 'temperature',
                   ),
-                  GaugeDisplay(
+                  HumidityGauge(
                     refString: "sensor_1_data",
-                    vital: 'humidity',
                   ),
                 ],
               ));
-  }
-}
-
-class GuageMeter extends StatefulWidget {
-  const GuageMeter({super.key, required this.gaugeName});
-
-  final String gaugeName;
-
-  @override
-  State<GuageMeter> createState() => _GuageMeterState();
-}
-
-class _GuageMeterState extends State<GuageMeter> {
-  @override
-  Widget build(BuildContext context) {
-    return Expanded(child: Container());
   }
 }

@@ -16,30 +16,21 @@ class _HomePageState extends State<HomePage> {
   final List<Widget> _screens = [
     const StatusPage(),
     const Expanded(
-        child: DrawGraph(
+        child: GraphTemp(
       refString: "sensor_1_data",
     )),
-    Container(
-      alignment: Alignment.center,
-      child: const Text(
-        "Humidity",
-        style: TextStyle(fontSize: 40),
-      ),
-    ),
-    Container(
-      alignment: Alignment.center,
-      child: const Text(
-        "Voltage",
-        style: TextStyle(fontSize: 40),
-      ),
-    ),
-    Container(
-      alignment: Alignment.center,
-      child: const Text(
-        "Vibrations",
-        style: TextStyle(fontSize: 40),
-      ),
-    ),
+    const Expanded(
+        child: GraphHumid(
+      refString: "sensor_1_data",
+    )),
+    const Expanded(
+        child: GraphVoltage(
+      refString: "sensor_1_data",
+    )),
+    const Expanded(
+        child: GraphVibration(
+      refString: "sensor_1_data",
+    )),
     const SettingsPage(),
   ];
 

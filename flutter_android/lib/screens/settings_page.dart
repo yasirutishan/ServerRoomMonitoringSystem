@@ -1,5 +1,6 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_android/screens/add_user_page.dart';
 
 class SettingsPage extends StatefulWidget {
   const SettingsPage({super.key});
@@ -28,6 +29,24 @@ class _SettingsPageState extends State<SettingsPage> {
               size: 24.0,
             ),
             onPressed: signUserOut,
+          ),
+          const SizedBox(
+            height: 10,
+          ),
+          FloatingActionButton.extended(
+            label: const Text('Add New User'), // <-- Text
+            icon: const Icon(
+              Icons.add,
+              size: 24.0,
+            ),
+            onPressed: () {
+              Navigator.push(
+                context,
+                MaterialPageRoute(
+                  builder: (context) => AddUserPage(),
+                ),
+              );
+            },
           ),
         ],
       ),

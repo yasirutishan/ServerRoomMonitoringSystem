@@ -14,7 +14,9 @@ class HomePage extends StatefulWidget {
 
 class _HomePageState extends State<HomePage> {
   final List<Widget> _screens = [
-    const StatusPage(),
+    const Expanded(
+      child: StatusPage(),
+    ),
     const Expanded(
         child: GraphTemp(
       refString: "sensor_1_data",

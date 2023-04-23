@@ -36,7 +36,7 @@ class _HomePageState extends State<HomePage> {
     const SettingsPage(),
   ];
 
-  int _selectedIndex = 1;
+  int _selectedIndex = 0;
 // sign user out
   void signUserOut() {
     FirebaseAuth.instance.signOut();

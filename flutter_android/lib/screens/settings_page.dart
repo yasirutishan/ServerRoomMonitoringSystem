@@ -17,6 +17,9 @@ class _SettingsPageState extends State<SettingsPage> {
 
   @override
   Widget build(BuildContext context) {
+    var showAddUser =
+        FirebaseAuth.instance.currentUser!.email!.startsWith('admin@');
+
     return Expanded(
       child: Column(
         mainAxisAlignment: MainAxisAlignment.center,
@@ -33,21 +36,23 @@ class _SettingsPageState extends State<SettingsPage> {
           const SizedBox(
             height: 10,
           ),
-          FloatingActionButton.extended(
-            label: const Text('Add New User'), // <-- Text
-            icon: const Icon(
-              Icons.add,
-              size: 24.0,
-            ),
-            onPressed: () {
-              Navigator.push(
-                context,
-                MaterialPageRoute(
-                  builder: (context) => AddUserPage(),
-                ),
-              );
-            },
-          ),
+          showAddUser
+              ? FloatingActionButton.extended(
+                  label: const Text('Add New User'), // <-- Text
+                  icon: const Icon(
+                    Icons.add,
+                    size: 24.0,
+                  ),
+                  onPressed: () {
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                        builder: (context) => AddUserPage(),
+                      ),
+                    );
+                  },
+                )
+              : const Text("")
         ],
       ),
     );

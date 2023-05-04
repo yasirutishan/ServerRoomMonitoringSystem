@@ -8,7 +8,7 @@ class TemperatureGuage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final ref = FirebaseDatabase.instance.ref(refString);
-    var val = 0;
+    double val = 0;
     return StreamBuilder(
       stream: ref.limitToLast(1).orderByKey().onValue,
       builder: (context, snapshot) {
@@ -22,7 +22,7 @@ class TemperatureGuage extends StatelessWidget {
           values.forEach((key, values) {
             // t.add(values);
             // print(values);
-            val = values["temperature"];
+            val = double.parse(values["temperature"].toString());
           });
 
           return Column(
@@ -46,7 +46,7 @@ class TemperatureGuage extends StatelessWidget {
                         startValue: 30.0, endValue: 70.0, color: Colors.red)
                   ], pointers: <GaugePointer>[
                     NeedlePointer(
-                      value: val.toDouble(),
+                      value: val,
                       enableAnimation: true,
                       animationType: AnimationType.ease,
                     )
@@ -78,7 +78,7 @@ class HumidityGauge extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final ref = FirebaseDatabase.instance.ref(refString);
-    var val = 0;
+    double val = 0;
     return StreamBuilder(
       stream: ref.limitToLast(1).orderByKey().onValue,
       builder: (context, snapshot) {
@@ -90,7 +90,7 @@ class HumidityGauge extends StatelessWidget {
           values.forEach((key, values) {
             // t.add(values);
             // print(values);
-            val = values["humidity"];
+            val = double.parse(values["humidity"].toString());
           });
 
           return Column(
@@ -109,7 +109,7 @@ class HumidityGauge extends StatelessWidget {
                     GaugeRange(startValue: 60, endValue: 100, color: Colors.red)
                   ], pointers: <GaugePointer>[
                     NeedlePointer(
-                      value: val.toDouble(),
+                      value: val,
                       enableAnimation: true,
                       animationType: AnimationType.ease,
                     )
@@ -141,7 +141,7 @@ class VoltageGauge extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final ref = FirebaseDatabase.instance.ref(refString);
-    var val = 0;
+    double val = 0;
     return StreamBuilder(
       stream: ref.limitToLast(1).orderByKey().onValue,
       builder: (context, snapshot) {
@@ -153,7 +153,7 @@ class VoltageGauge extends StatelessWidget {
           values.forEach((key, values) {
             // t.add(values);
             // print(values);
-            val = values["voltage"];
+            val = double.parse(values["voltage"].toString());
           });
 
           return Column(
@@ -175,13 +175,13 @@ class VoltageGauge extends StatelessWidget {
                         startValue: 248, endValue: 280, color: Colors.red)
                   ], pointers: <GaugePointer>[
                     NeedlePointer(
-                      value: val.toDouble(),
+                      value: val,
                       enableAnimation: true,
                       animationType: AnimationType.ease,
                     )
                   ], annotations: <GaugeAnnotation>[
                     GaugeAnnotation(
-                        widget: Text("${val}V",
+                        widget: Text("${val.toStringAsFixed(2)}V",
                             style: const TextStyle(
                                 fontSize: 25, fontWeight: FontWeight.bold)),
                         angle: 90,
@@ -196,6 +196,89 @@ class VoltageGauge extends StatelessWidget {
               child: Center(child: CircularProgressIndicator()));
         }
       },
+    );
+  }
+}
+
+class BulbWidget extends StatefulWidget {
+  const BulbWidget({Key? key}) : super(key: key);
+
+  @override
+  _BulbWidgetState createState() => _BulbWidgetState();
+}
+
+class _BulbWidgetState extends State<BulbWidget> {
+  bool _isRed = false;
+  bool _isFire = false;
+  bool _isSmoke = false;
+
+  @override
+  void initState() {
+    super.initState();
+    final databaseReference = FirebaseDatabase.instance.ref().child('set');
+    databaseReference.onValue.listen((event) {
+      final data = event.snapshot.value as Map<dynamic, dynamic>?;
+      if (data != null) {
+        final alarm = data['alarm'] as bool?;
+        final fire = data['fire'] as bool?;
+        final smoke = data['smoke'] as bool?;
+        if (alarm != null) {
+          setState(() {
+            _isRed = alarm;
+          });
+        }
+        if (fire != null) {
+          setState(() {
+            _isFire = fire;
+          });
+        }
+        if (smoke != null) {
+          setState(() {
+            _isSmoke = smoke;
+          });
+        }
+      }
+    });
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    final alarmColor = _isRed ? Colors.red : Colors.green;
+    final fireColor = _isFire ? Colors.red : Colors.green;
+    final smokeColor = _isSmoke ? Colors.red : Colors.green;
+    return Column(
+      mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+      children: [
+        Row(
+          children: [
+            Expanded(
+              child: Icon(
+                Icons.alarm,
+                color: alarmColor,
+                size: 75,
+              ),
+            ),
+            Expanded(
+              child: Icon(
+                Icons.fire_truck,
+                color: fireColor,
+                size: 75,
+              ),
+            ),
+            Expanded(
+              child: Icon(
+                Icons.propane_tank_sharp,
+                color: smokeColor,
+                size: 75,
+              ),
+            ),
+          ],
+        ),
+        Text(
+          _isRed || _isFire || _isSmoke ? "Check Alarms" : "All Systems Good",
+          style: const TextStyle(fontSize: 25, fontWeight: FontWeight.bold),
+        ),
+      ],
     );
   }
 }

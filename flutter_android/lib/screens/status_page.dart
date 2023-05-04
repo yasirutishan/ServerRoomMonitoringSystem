@@ -17,24 +17,31 @@ class _StatusPageState extends State<StatusPage> {
         child: Column(
           children: [
             Expanded(
+                child: Row(
+              children: [
+                // Expanded(child: GraphVibration(refString: "sensor_1_data")),
+                Expanded(child: BulbWidget()),
+                Expanded(child: TemperatureGuage(refString: "sensor_1_data")),
+              ],
+            )),
+            Expanded(
               child: Row(
                 children: [
-                  Expanded(child: TemperatureGuage(refString: "sensor_1_data")),
                   Expanded(child: HumidityGauge(refString: "sensor_1_data")),
+                  Expanded(child: VoltageGauge(refString: "sensor_1_data")),
                 ],
               ),
             ),
             Expanded(
               child: Row(
                 children: [
-                  Expanded(child: VoltageGauge(refString: "sensor_1_data")),
                   Expanded(child: GraphVoltage(refString: "sensor_1_data")),
                 ],
               ),
             ),
-            Expanded(
-                child:
-                    Expanded(child: GraphVibration(refString: "sensor_1_data")))
+            // Expanded(
+            //     child:
+            //         Expanded(child: GraphVibration(refString: "sensor_1_data")))
           ],
         ));
   }

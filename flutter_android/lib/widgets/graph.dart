@@ -24,8 +24,8 @@ class GraphTemp extends StatelessWidget {
             // print(values);
             // val = values["temperature"];
             DataPoint p = DataPoint(
-                DateTime.fromMicrosecondsSinceEpoch(
-                    (values["timeStamp"] / 1000).toInt()),
+                DateTime.fromMillisecondsSinceEpoch(
+                    (values["timeStamp"] * 1000).toInt()),
                 double.parse(values["temperature"].toString()),
                 double.parse(values["humidity"].toString()),
                 double.parse(values["voltage"].toString()),
@@ -86,8 +86,8 @@ class GraphHumid extends StatelessWidget {
             // print(values);
             // val = values["temperature"];
             DataPoint p = DataPoint(
-                DateTime.fromMicrosecondsSinceEpoch(
-                    (values["timeStamp"] / 1000).toInt()),
+                DateTime.fromMillisecondsSinceEpoch(
+                    (values["timeStamp"] * 1000).toInt()),
                 double.parse(values["temperature"].toString()),
                 double.parse(values["humidity"].toString()),
                 double.parse(values["voltage"].toString()),
@@ -147,8 +147,8 @@ class GraphVoltage extends StatelessWidget {
             // print(values);
             // val = values["temperature"];
             DataPoint p = DataPoint(
-                DateTime.fromMicrosecondsSinceEpoch(
-                    (values["timeStamp"] / 1000).toInt()),
+                DateTime.fromMillisecondsSinceEpoch(
+                    (values["timeStamp"] * 1000).toInt()),
                 double.parse(values["temperature"].toString()),
                 double.parse(values["humidity"].toString()),
                 double.parse(values["voltage"].toString()),
@@ -208,8 +208,8 @@ class GraphVibration extends StatelessWidget {
             // print(values);
             // val = values["temperature"];
             DataPoint p = DataPoint(
-                DateTime.fromMicrosecondsSinceEpoch(
-                    (values["timeStamp"] / 1000).toInt()),
+                DateTime.fromMillisecondsSinceEpoch(
+                    (values["timeStamp"] * 1000).toInt()),
                 double.parse(values["temperature"].toString()),
                 double.parse(values["humidity"].toString()),
                 double.parse(values["voltage"].toString()),
@@ -292,8 +292,8 @@ class _GraphBuilderState extends State<GraphBuilder> {
             // print(values);
             // val = values["temperature"];
             DataPoint p = DataPoint(
-              DateTime.fromMicrosecondsSinceEpoch(
-                  (values["timeStamp"] / 1000).toInt()),
+              DateTime.fromMillisecondsSinceEpoch(
+                  (values["timeStamp"] * 1000).toInt()),
               double.parse(values["temperature"].toString()),
               double.parse(values["humidity"].toString()),
               double.parse(values["voltage"].toString()),

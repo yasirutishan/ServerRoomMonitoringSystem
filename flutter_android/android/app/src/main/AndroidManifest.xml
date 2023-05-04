@@ -1,7 +1,7 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.example.flutter_android">
    <application
-        android:label="flutter_android"
+        android:label="IoT Server Monitoring"
         android:name="${applicationName}"
         android:icon="@mipmap/ic_launcher">
         <activity

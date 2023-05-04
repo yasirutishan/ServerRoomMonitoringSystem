@@ -15,7 +15,7 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: 'App Title',
+      title: 'IoT Server Monitoring',
       theme: ThemeData(
         brightness: Brightness.light,
         /* light theme settings */

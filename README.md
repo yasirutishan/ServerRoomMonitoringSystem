@@ -1,6 +1,7 @@
 # IoT Based Server Monitoring System
 
-![Untitled-2-01](https://user-images.githubusercontent.com/85503750/223708862-e2662155-9cb6-4fcf-870a-c3d312211b0a.jpg)
+![IoT server monitoring system_bb](https://user-images.githubusercontent.com/85503750/236848225-fac30b90-aa75-4f09-9adb-722ce5f13161.png)
+
 
 ## About 
 A server room is a space for storing, powering, and operating computer servers and their associated components. Every firm or institution has its own server rooms or data centers where all of its computers and networks are connected. Climate is one of the factors that determine the energy consumption and environmental effect of a server room in such situations. In this project, we will develop a system that monitors the temperature, humidity, smoke leakage, current voltage, and vibration of the server room via an Arduino IoT dashboard. In addition to attempting to detect and alert for Power Failure, Fire, Smoke, etc., this system will also integrate automation at the edge level for temperature control.

@@ -32,13 +32,12 @@ Firebase
 
 ### Key Features
 
-Dashboard Monitoring
-
-Notifications - Alerts on Email 
-
-Syncfusion Flutter Charts
-
-Bcrypt
+•	DHT sensor library for reading temperature and humidity.
+•	EmonLib for energy monitoring
+•	WiFi and WiFiManager for connecting to Wi-Fi.
+•	Time library for timestamping
+•	FirebaseESP32 for connecting to Firebase.
+•	ESP32_MailClient for sending email notifications.
 
 ---
 

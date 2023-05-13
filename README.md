@@ -31,13 +31,12 @@ Firebase
 ---
 
 ### Key Features
-
-•	DHT sensor library for reading temperature and humidity.
-•	EmonLib for energy monitoring
-•	WiFi and WiFiManager for connecting to Wi-Fi.
-•	Time library for timestamping
-•	FirebaseESP32 for connecting to Firebase.
-•	ESP32_MailClient for sending email notifications.
+DHT sensor library for reading temperature and humidity.
+EmonLib for energy monitoring
+WiFi and WiFiManager for connecting to Wi-Fi.
+Time library for timestamping
+FirebaseESP32 for connecting to Firebase.
+ESP32_MailClient for sending email notifications.
 
 ---
 

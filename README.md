@@ -6,9 +6,10 @@
 A server room is a space for storing, powering, and operating computer servers and their associated components. Every firm or institution has its own server rooms or data centers where all of its computers and networks are connected. Climate is one of the factors that determine the energy consumption and environmental effect of a server room in such situations. In this project, we will develop a system that monitors the temperature, humidity, smoke leakage, current voltage, and vibration of the server room via an Arduino IoT dashboard. In addition to attempting to detect and alert for Power Failure, Fire, Smoke, etc., this system will also integrate automation at the edge level for temperature control.
 
 ---
-
+## Mobile Application Development 
 ![Untitled-1](https://github.com/yasirutishan/ServerRoomMonitoringSystem/assets/85503750/2a570e69-ffac-4963-8582-c167fba4def2)
 
+---
 
 ## Contact Me
 ### Who Am I?
@@ -35,10 +36,15 @@ Firebase
 
 ### Key Features
 DHT sensor library for reading temperature and humidity.
+
 EmonLib for energy monitoring
+
 WiFi and WiFiManager for connecting to Wi-Fi.
+
 Time library for timestamping
+
 FirebaseESP32 for connecting to Firebase.
+
 ESP32_MailClient for sending email notifications.
 
 ---

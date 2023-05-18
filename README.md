@@ -28,7 +28,7 @@ Arduino IDE - C++
 
 Google IoT Cloud
 
-Visual Studio Code - Flutter | Dart
+Application - Flutter | Dart
 
 Firebase
 

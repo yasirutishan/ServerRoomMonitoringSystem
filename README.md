@@ -7,6 +7,9 @@ A server room is a space for storing, powering, and operating computer servers a
 
 ---
 
+![Untitled-1](https://github.com/yasirutishan/ServerRoomMonitoringSystem/assets/85503750/2a570e69-ffac-4963-8582-c167fba4def2)
+
+
 ## Contact Me
 ### Who Am I?
 

@@ -1,6 +1,6 @@
 # IoT Based Server Monitoring System
 
-![Untitled-2-01](https://user-images.githubusercontent.com/85503750/223708862-e2662155-9cb6-4fcf-870a-c3d312211b0a.jpg)
+![Untitled-1-01](https://user-images.githubusercontent.com/85503750/236848442-dd9f9d8f-fcd4-4d95-923d-b75ac69c8f02.png)
 
 ## About 
 A server room is a space for storing, powering, and operating computer servers and their associated components. Every firm or institution has its own server rooms or data centers where all of its computers and networks are connected. Climate is one of the factors that determine the energy consumption and environmental effect of a server room in such situations. In this project, we will develop a system that monitors the temperature, humidity, smoke leakage, current voltage, and vibration of the server room via an Arduino IoT dashboard. In addition to attempting to detect and alert for Power Failure, Fire, Smoke, etc., this system will also integrate automation at the edge level for temperature control.
@@ -31,14 +31,12 @@ Firebase
 ---
 
 ### Key Features
-
-Dashboard Monitoring
-
-Notifications - Alerts on Email 
-
-Syncfusion Flutter Charts
-
-Bcrypt
+DHT sensor library for reading temperature and humidity.
+EmonLib for energy monitoring
+WiFi and WiFiManager for connecting to Wi-Fi.
+Time library for timestamping
+FirebaseESP32 for connecting to Firebase.
+ESP32_MailClient for sending email notifications.
 
 ---
 
